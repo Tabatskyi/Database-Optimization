@@ -1,12 +1,12 @@
 -- search_customer_by_email
-CREATE INDEX CONCURRENTLY idx_cust_email_reverse 
+CREATE INDEX idx_cust_email_reverse 
 ON customers (REVERSE(email) varchar_pattern_ops);
 
 -- orders_by_city_and_status
-CREATE INDEX CONCURRENTLY idx_orders_status_city ON orders(status, delivery_city);
+CREATE INDEX idx_orders_status_city ON orders(status, delivery_city);
 
 -- cartesian_pressure
-CREATE INDEX CONCURRENTLY idx_events_time ON customer_events_wide(event_time);
+CREATE INDEX idx_events_time ON customer_events_wide(event_time);
 
 -- heavy_join
 CREATE MATERIALIZED VIEW mv_customer_revenue AS

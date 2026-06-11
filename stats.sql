@@ -51,3 +51,5 @@ SELECT
     query
 FROM pg_stat_activity
 WHERE wait_event_type = 'Lock';
+
+-- SELECT pg_stat_statements_reset();
