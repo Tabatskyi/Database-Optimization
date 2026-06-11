@@ -474,7 +474,7 @@ def table_lock_worker() -> None:
         try:
             with conn.cursor() as cur:
                 cur.execute("SET lock_timeout = '30s';")
-                cur.execute("LOCK TABLE orders IN SHARE ROW EXCLUSIVE MODE;")
+                # cur.execute("LOCK TABLE orders IN SHARE ROW EXCLUSIVE MODE;")
                 print("table_lock_worker: locked orders table")
                 time.sleep(random.uniform(8, 12))
                 conn.commit()
@@ -504,6 +504,9 @@ def orders_writer_worker() -> None:
 
 def deadlock_worker(name: str, first_customer_id: int, second_customer_id: int) -> None:
     """Creates intentional deadlocks by locking two rows in opposite order."""
+    
+    first_customer_id, second_customer_id = sorted([first_customer_id, second_customer_id])
+    
     while True:
         conn = get_conn()
         conn.autocommit = False
