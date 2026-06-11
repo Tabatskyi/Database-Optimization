@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:latest
-    container_name: advanceddb_01assignment_postgres
+    container_name: advanceddb_02assignment_postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: supersecretpassword

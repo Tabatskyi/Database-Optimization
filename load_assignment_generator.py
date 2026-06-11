@@ -345,7 +345,7 @@ def slow_queries_worker() -> None:
         ("search_customer_by_email", """
             SELECT *
             FROM customers
-            WHERE email LIKE '%gmail%';
+            WHERE REVERSE(email) LIKE REVERSE('%gmail.com');
         """),
         ("orders_by_city_and_status", """
             SELECT *

@@ -1,5 +1,4 @@
- -- CREATE EXTENSION pg_stat_statements; -- If not exitsts in current DB
-
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements; 
 SELECT
     query,
     calls,
